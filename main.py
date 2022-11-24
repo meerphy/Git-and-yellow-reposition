@@ -1,16 +1,15 @@
 import sys
 
 from random import randrange
-from PyQt5 import uic
 from PyQt5.QtGui import QPainter, QColor
-from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton
-from PyQt5.QtCore import QPoint
+from PyQt5.QtWidgets import QMainWindow, QApplication
+from UI import Ui_MainWindow
 
 
-class Example(QMainWindow):
+class Example(QMainWindow, Ui_MainWindow):
     def __init__(self):
-        super().__init__()
-        uic.loadUi('UI.ui', self)
+        super(Example, self).__init__()
+        self.setupUi(self)
         self.initUI()
 
     def initUI(self):
@@ -35,7 +34,7 @@ class Example(QMainWindow):
         self.do_paint = True
         n = randrange(10, 20)
         for i in range(n):
-            qp.setBrush(QColor(randrange(256), randrange(256), 0))
+            qp.setBrush(QColor(randrange(256), randrange(256), randrange(256)))
             d = randrange(50)
             qp.drawEllipse(randrange(400 - d), randrange(400 - d), d, d)
 
